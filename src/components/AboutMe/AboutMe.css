@@ -1,0 +1,129 @@
+.about-me__avatar {
+    max-width: 270px;
+    max-height: 327px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-left: 15px;
+}
+
+.about-me {
+    padding: 110px 70px 100px;
+}
+
+.about-me__container {
+    display: flex;
+    margin-top: 66px;
+    justify-content: space-between;
+}
+
+.about-me__name {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.about-me__job {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    color: #FFFFFF;
+    margin-top: 18px;
+    margin-bottom: 26px;
+}
+
+.about-me__text {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #FFFFFF;
+    max-width: 600px;
+    margin-top: 26px;
+    margin-bottom: 99px;
+}
+
+.about-me__link {
+    text-decoration: none;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    transition: opacity .1s linear;
+}
+
+.about-me__link:hover {
+    opacity: .8;
+}
+
+@media screen and (max-width: 825px) {
+    .about-me {
+        padding: 90px 50px 90px;
+    }
+
+    .about-me__name {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .about-me__avatar {
+        max-width: 255px;
+        max-height: 307px;
+    }
+
+    .about-me__job {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .about-me__text {
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom: 96px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .about-me {
+        padding: 70px 14px 70px;
+    }
+
+    .about-me__container {
+        flex-direction: column-reverse;
+        margin-top: 60px;
+    }
+
+    .about-me__avatar {
+        max-width: 292px;
+        max-height: 352px;
+        margin-left: 0;
+        margin-bottom: 40px;
+    }
+
+    .about-me__name {
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .about-me__job {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 20px auto;
+    }
+
+    .about-me__text {
+        font-size: 11px;
+        line-height: 16px;
+        margin-bottom: 40px;
+        margin-top: 0;
+    }
+}
