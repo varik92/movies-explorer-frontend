@@ -1,0 +1,119 @@
+.movie-card {
+    max-width: 360px;
+    max-height: 319px;
+    background: #222222;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.movie-card__text-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px;
+}
+
+.movie-card__title {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #FFFFFF;
+    margin: 0;
+    overflow: hidden;
+    max-width: 240px;
+    max-height: 18px;
+}
+
+.movie-card__duration {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: right;
+    color: #8B8B8B;
+    margin: 0;
+}
+
+.movie-card__button {
+    width: 100px;
+    height: 29px;
+    margin: 18px auto;
+    background: #313131;
+    border-radius: 30px;
+    padding: 0;
+    border: none;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 11px;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: opacity .1s linear;
+}
+
+.movie-card__button:hover {
+    opacity: 0.8;
+}
+
+.movie-card__button_active {
+    background-color: #EE3465;
+    font-size: 0;
+    background-image: url(../../images/btn-saved.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.movie-card__image {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+}
+
+
+@media screen and (max-width: 825px) {
+    .movie-card {
+        max-width: 342px;
+        max-height: 309px;
+    }
+
+    .movie-card__title {
+        max-width: 224px;
+    }
+
+    .movie-card__image {
+        max-height: 190px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .movie-card {
+        max-width: 300px;
+        max-height: 271px;
+        margin: auto;
+    }
+
+    .movie-card__title {
+        max-width: 200px;
+        font-size: 12px;
+    }
+
+    .movie-card__image {
+        max-height: 168px;
+    }
+
+    .movie-card__duration {
+        font-size: 10px;
+    }
+
+    .movie-card__text-content {
+        padding: 14px;
+    }
+}

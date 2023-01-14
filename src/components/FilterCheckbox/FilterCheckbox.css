@@ -48,3 +48,28 @@ input:checked+.checkbox__toggle:after {
     margin-left: 41px;
     margin-right: 14px;
 }
+
+.checkbox__container {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 825px) {
+    .checkbox__title {
+        margin: 0 12px 0 0;
+    }
+
+    .checkbox__container {
+        margin-top: 37px;
+    }
+}
+
+@media screen and (max-width: 825px) {
+    .checkbox__container {
+        margin-top: 44px;
+    }
+
+    .checkbox__title {
+        font-size: 11px;
+    }
+}

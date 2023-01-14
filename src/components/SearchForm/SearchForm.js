@@ -9,7 +9,6 @@ export default function SearchForm() {
                 <form action='#' noValidate className='search__form'>
                     <input className='search__input' placeholder='Фильм' />
                     <button type='submit' className='search__button'></button>
-                    <span className='search__error'></span>
                 </form>
                 <FilterCheckbox />
             </div>

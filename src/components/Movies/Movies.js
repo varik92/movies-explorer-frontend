@@ -9,11 +9,11 @@ export default function Movies() {
         <>
             <main className='movies'>
                 <SearchForm />
-                {/* {1 ? (
+                {0 ? (
                     <Preloader />
                 ) : (
                     <MoviesCardList />
-                )} */}
+                )}
             </main>
 
             <Footer />
