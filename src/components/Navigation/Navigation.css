@@ -75,10 +75,14 @@
     font-family: 'Inter', 'Arial', sans-serif;
     font-size: 14px;
     line-height: 18px;
-    font-weight: 500;
+    font-weight: 400;
     color: rgb(255, 255, 255);
     text-decoration: none;
     transition: opacity .1s linear;
+}
+
+.active {
+    font-weight: 500;
 }
 
 .navigation__link:hover {
@@ -166,11 +170,16 @@
 
     .navigation__link {
         padding: 0 0 4px;
+        font-weight: 500;
     }
 
     .navigation__link_type_profile {
         line-height: 16px;
         padding: 0px;
+    }
+
+    .active {
+        border-bottom: 1px solid #FFFFFF;
     }
 }
 

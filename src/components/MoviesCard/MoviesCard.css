@@ -63,10 +63,16 @@
     opacity: 0.8;
 }
 
-.movie-card__button_active {
+.movie-card__button_type_saved {
     background-color: #EE3465;
     font-size: 0;
     background-image: url(../../images/btn-saved.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.movie-card__button_type_delete {
+    background-image: url(../../images/btn-delete.svg);
     background-repeat: no-repeat;
     background-position: center center;
 }

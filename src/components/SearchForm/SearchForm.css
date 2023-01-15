@@ -32,7 +32,7 @@
 }
 
 .search__input:focus {
-    outline: none
+    outline: none;
 }
 
 .search__container {

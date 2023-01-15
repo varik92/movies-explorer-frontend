@@ -2,36 +2,32 @@ import React from "react";
 import { Router, Route, Routes, Redirect, useHistory } from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import './App.css';
-import Header from '../Header/Header'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js'
 import Main from '../Main/Main'
 import Movies from '../Movies/Movies'
+import SavedMovies from "../SavedMovies/SavedMovies";
+import Profile from '../Profile/Profile';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
+import NotFound from '../NotFound/NotFound';
 
-function App() {
+export default function App() {
 
   const [currentUser, setCurrentUser] = React.useState({});
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="app">
-        <Header />
+      <div className='app'>
         <Routes>
           <Route path='/' element={<Main />} />
-        </Routes >
-        <Routes>
           <Route path='/movies' element={<Movies />} />
-        </Routes >
-        {/*  
-          <Route path='/signup'>
-            <Register onRegister={handleRegister} />
-          </Route>
-          <Route path='/signin'>
-            <Login onLogin={handleLogin} />
-          </Route>
-          <ProtectedRoute
-            exact path='/'
-            component={Main}
-            loggedIn={loggedIn} />
+          <Route path='/saved-movies' element={<SavedMovies />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/signup' element={<Register />} />
+          <Route path='/signin' element={<Login />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+        {/*
           <Route>
             {loggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
           </Route>
@@ -40,5 +36,3 @@ function App() {
     </CurrentUserContext.Provider>
   );
 }
-
-export default App;
