@@ -17,6 +17,7 @@
     padding: 0;
     display: flex;
     flex-direction: column;
+    list-style-type: none;
 }
 
 .portfolio__list-item {
@@ -34,7 +35,6 @@
 }
 
 .portfolio__list-link {
-    list-style-type: none;
     text-decoration: none;
     font-family: 'Inter', 'Arial', sans-serif;
     font-style: normal;

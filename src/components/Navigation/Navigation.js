@@ -2,7 +2,7 @@ import './Navigation.css';
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-const Navigation = () => {
+export default function Navigation() {
     const [showItems, setShowItems] = useState(false);
 
     const handleToggleMenu = () => setShowItems(!showItems);
@@ -35,5 +35,3 @@ const Navigation = () => {
         </nav>
     );
 };
-
-export default Navigation;

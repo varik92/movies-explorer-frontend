@@ -35,6 +35,10 @@
     outline: none;
 }
 
+.search__form:focus-within {
+    border: 1.5px solid rgba(170, 170, 170, 0.8);
+}
+
 .search__container {
     display: flex;
     justify-content: space-between;

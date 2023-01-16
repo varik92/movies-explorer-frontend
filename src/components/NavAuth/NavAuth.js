@@ -1,7 +1,7 @@
 import './NavAuth.css';
 import { Link } from 'react-router-dom';
 
-function NavAuth() {
+export default function NavAuth() {
     return (
         <nav className="nav-auth">
             <ul className="nav-auth__list">
@@ -15,5 +15,3 @@ function NavAuth() {
         </nav>
     );
 };
-
-export default NavAuth;

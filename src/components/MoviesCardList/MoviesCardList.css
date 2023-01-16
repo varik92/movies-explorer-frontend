@@ -32,6 +32,8 @@
     border-radius: 6px;
     cursor: pointer;
     transition: opacity .1s linear;
+    padding: 0;
+    border: none;
 }
 
 .movies-cards__btn-more:hover {
