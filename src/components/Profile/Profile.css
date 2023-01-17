@@ -1,0 +1,134 @@
+.profile {
+    padding: 74px 0 70px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 410px;
+}
+
+.profile__title {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0 0 123px;
+}
+
+.profile__user-name {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #424242;
+    padding-bottom: 16px;
+}
+
+.profile__user-email {
+    display: flex;
+    justify-content: space-between;
+    margin: 17px 0 220px;
+}
+
+.profile__text {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 14px;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.profile__btn-edit {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    display: flex;
+    color: #FFFFFF;
+    width: max-content;
+    padding: 0;
+    margin: 0 auto 16px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    transition: opacity .1s linear;
+}
+
+.profile__btn-edit:hover {
+    opacity: .8;
+}
+
+.profile__btn-logout {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #EE3465;
+    width: max-content;
+    padding: 0;
+    margin: 0 auto;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    transition: opacity .1s linear;
+}
+
+.profile__btn-logout:hover {
+    opacity: .8;
+}
+
+.profile__input {
+    border: none;
+    background-color: transparent;
+    text-align: right;
+    overflow: hidden;
+    max-width: 50%;
+    padding: 0;
+}
+
+.profile__input:focus {
+    outline: none
+}
+
+@media screen and (max-width: 825px) {
+    .profile {
+        padding: 236px 0 269px;
+    }
+
+    .profile__title {
+        margin-bottom: 96px;
+    }
+
+    .profile__user-email {
+        margin-bottom: 210px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .profile {
+        padding: 70px 0 40px;
+        width: 81.25%;
+    }
+
+    .profile__title {
+        margin-bottom: 80px;
+    }
+
+    .profile__user-email {
+        margin-bottom: 379px;
+    }
+
+    .profile__btn-logout {
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .profile__btn-edit {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

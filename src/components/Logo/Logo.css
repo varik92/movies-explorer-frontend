@@ -1,0 +1,42 @@
+.logo-container {
+    padding: 0 0 40px;
+    width: 100%;
+}
+
+.logo {
+    background-image: url('../../images/logo.svg');
+    display: block;
+    width: 38px;
+    height: 38px;
+    margin-bottom: 40px;
+    transition: opacity .1s linear;
+}
+
+.logo:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.logo-greeting {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+@media screen and (max-width: 475px) {
+    .logo {
+        margin: 0 auto 50px;
+    }
+
+    .logo-greeting {
+        text-align: center;
+    }
+
+    .logo-container {
+        padding-bottom: 80px;
+    }
+}
