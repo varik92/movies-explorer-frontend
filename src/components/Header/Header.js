@@ -5,10 +5,11 @@ import Navigation from '../Navigation/Navigation';
 import NavAuth from '../NavAuth/NavAuth';
 
 export default function Header({ loggedIn }) {
+
     return (
         <header className='header'>
             <Link to='/' className='header__logo'></Link>
-            {1 ? <Navigation /> : <NavAuth />}
+            {loggedIn ? <Navigation /> : <NavAuth />}
         </header >
     )
 }

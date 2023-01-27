@@ -27,7 +27,7 @@
 .profile__user-email {
     display: flex;
     justify-content: space-between;
-    margin: 17px 0 220px;
+    margin: 17px 0 197px;
 }
 
 .profile__text {
@@ -59,6 +59,11 @@
 
 .profile__btn-edit:hover {
     opacity: .8;
+}
+
+.profile__btn-edit_disabled {
+    pointer-events: none;
+    opacity: .2;
 }
 
 .profile__btn-logout {
@@ -94,6 +99,27 @@
     outline: none
 }
 
+.profile__server-error {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+    color: #FF004C;
+    margin-bottom: 10px;
+    visibility: hidden;
+    display: block;
+}
+
+.profile__server-error_active {
+    visibility: visible;
+}
+
+.form_type_profile {
+    all: unset
+}
+
 @media screen and (max-width: 825px) {
     .profile {
         padding: 236px 0 269px;
@@ -104,7 +130,7 @@
     }
 
     .profile__user-email {
-        margin-bottom: 210px;
+        margin-bottom: 187px;
     }
 }
 
@@ -119,7 +145,7 @@
     }
 
     .profile__user-email {
-        margin-bottom: 379px;
+        margin-bottom: 356px;
     }
 
     .profile__btn-logout {

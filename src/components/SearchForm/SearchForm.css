@@ -1,11 +1,12 @@
 .search {
-    padding-top: 80px;
+    padding-top: 57px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 83px;
     border-bottom: 1px solid rgba(170, 170, 170, 0.2);
     margin-bottom: 10px;
+    flex-direction: column;
 }
 
 .search__input {
@@ -71,6 +72,19 @@
     opacity: 0.8;
 }
 
+.search__message {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #EE3465;
+    visibility: hidden;
+    margin: 0 0 5px;
+}
+
+.search__message_active {
+    visibility: visible;
+}
+
 @media screen and (max-width: 825px) {
     .search__container {
         flex-direction: column;
@@ -97,5 +111,10 @@
 
     .search {
         padding-bottom: 44px;
+    }
+
+    .search__message {
+        font-size: 11px;
+        line-height: 13px;
     }
 }
