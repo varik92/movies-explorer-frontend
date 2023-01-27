@@ -5,3 +5,4 @@
 https://disk.yandex.ru/d/Q2m9GymvBmTB4w
 
 Ссылка на пул реквест
+https://github.com/varik92/movies-explorer-frontend/pull/2
