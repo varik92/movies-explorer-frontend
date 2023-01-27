@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Route, Routes, Redirect, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import './App.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js'
@@ -210,6 +210,7 @@ export default function App() {
       .authorize(email, password)
       .then((res) => {
         if (res) {
+          console.log(res)
           navigate('/movies');
           setLoggedIn(true);
         }

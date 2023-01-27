@@ -7,7 +7,7 @@ import Preloader from '../Preloader/Preloader';
 export default function MoviesCardList({ moviesToRender, errorMessage, loadMore, filtredMovies,
     loadingMore, saveMovie, savedMovies, deleteMovie, inputSearch }) {
     const location = useLocation();
-    console.log(moviesToRender)
+
     return (
         location.pathname === '/movies' ? (
             !inputSearch ? <div></div> : errorMessage ? <div className='movies-cards__text'>{errorMessage}</div> :
