@@ -1,5 +1,5 @@
-/* export const baseUrl = 'https://api.movies-explorer.v92.nomoredomains.club'*/
-export const baseUrl = 'http://localhost:3000'
+export const baseUrl = 'https://api.movies-explorer.v92.nomoredomains.club'
+/*export const baseUrl = 'http://localhost:3000'*/
 export const checkResponse = (res) => {
     if (res.ok) {
         return res.json();

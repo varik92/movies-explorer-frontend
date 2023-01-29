@@ -10,7 +10,7 @@ export default function Profile({ loggedIn, profileErrorMessage, onEditUser, onS
 
     const { values, handleChange, isValid, } = useFormWithValidation(currentValues);
 
-    const isProfileValid = isValid && (values.name !== currentValues.name && values.email !== currentValues.email);
+    const isProfileValid = isValid && (values.name !== currentValues.name || values.email !== currentValues.email);
 
     function handleEditUser(e) {
         e.preventDefault();
