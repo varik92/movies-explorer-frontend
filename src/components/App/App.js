@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import './App.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js'
@@ -33,6 +33,8 @@ export default function App() {
   const [loginErrorMessage, setLoginErrorMessage] = React.useState('');
   const [loggedIn, setLoggedIn] = React.useState(JSON.parse(localStorage.getItem('loggedIn')) || false);
   const [profileErrorMessage, setProfileErrorMessage] = React.useState('');
+  const [showSuccessMessage, setShowSuccessMessage] = React.useState(false);
+  const [currentUserSavedMovies, setCurrentUserSavedMovies] = React.useState([]);
 
   React.useEffect(() => {
     async function getAllMovies() {
@@ -120,7 +122,6 @@ export default function App() {
         'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'
       );
     } finally {
-
       setLoading(false);
     }
   }
@@ -162,7 +163,8 @@ export default function App() {
       .then(() => {
         const newSavedMoviesList = savedMovies.filter((item) => item._id !== movieToDelete._id);
         setSavedMovies(newSavedMoviesList);
-        setSavedMoviesToRender(newSavedMoviesList)
+        const newSavedMoviesToRender = newSavedMoviesList.filter(({ owner }) => owner === currentUser._id)
+        setSavedMoviesToRender(newSavedMoviesToRender)
       })
       .catch((err) => { console.log(err); });
   };
@@ -170,7 +172,7 @@ export default function App() {
   function handleSavedSearch(search) {
     setSavedSearch(search)
     try {
-      let data = savedMovies.filter(({ nameRU }) =>
+      let data = currentUserSavedMovies.filter(({ nameRU }) =>
         nameRU.toLowerCase().includes(search.toLowerCase()));
 
       if (checkedSaved) {
@@ -210,7 +212,6 @@ export default function App() {
       .authorize(email, password)
       .then((res) => {
         if (res) {
-          console.log(res)
           navigate('/movies');
           setLoggedIn(true);
         }
@@ -224,10 +225,14 @@ export default function App() {
     try {
       const user = await MainApi.editUserInfo(userData);
       setCurrentUser(user.data);
+      setProfileErrorMessage('')
+      setShowSuccessMessage(true)
     } catch (err) {
-      setProfileErrorMessage(err);
-    }
-  };
+      setProfileErrorMessage(`${err}: Пользователь с таким Email уже существует`);
+    } finally {
+      setTimeout(() => setShowSuccessMessage(false), 2000);
+    };
+  }
 
   async function handleSignOut() {
     try {
@@ -254,22 +259,34 @@ export default function App() {
                 saveMovie={saveMovie} savedMovies={savedMovies} deleteMovie={deleteMovie} moviesToRender={moviesToRender}
                 loading={loading} inputSearch={inputMoviesSearch} setSavedMovies={setSavedMovies}
                 setSavedMoviesToRender={setSavedMoviesToRender} setMoviesToRender={setMoviesToRender}
-                allMovies={allMovies} loggedIn={loggedIn} />
+                allMovies={allMovies} loggedIn={loggedIn} currentUser={currentUser}
+                setCurrentUserSavedMovies={setCurrentUserSavedMovies} />
             </ProtectedRoute>} />
           <Route path='/saved-movies'
             element={<ProtectedRoute loggedIn={loggedIn}>
               <SavedMovies handleSearch={handleSavedSearch} checked={checkedSaved} handleCheckbox={handleSavedCheckbox}
                 moviesToRender={savedMoviesToRender} errorMessage={errorMessage} saveMovie={saveMovie} savedMovies={savedMovies}
                 deleteMovie={deleteMovie} inputSearch={inputSavedSearch} setSavedMovies={setSavedMovies}
-                setSavedMoviesToRender={setSavedMoviesToRender} loggedIn={loggedIn} />
+                setSavedMoviesToRender={setSavedMoviesToRender} loggedIn={loggedIn} currentUser={currentUser}
+                setCurrentUserSavedMovies={setCurrentUserSavedMovies} />
             </ProtectedRoute>} />
           <Route path='/profile'
             element={<ProtectedRoute loggedIn={loggedIn}>
               <Profile loggedIn={loggedIn} profileErrorMessage={profileErrorMessage}
-                onEditUser={handleEditUser} onSignOut={handleSignOut} />
+                onEditUser={handleEditUser} onSignOut={handleSignOut} showSuccessMessage={showSuccessMessage} />
             </ProtectedRoute>} />
-          <Route path='/signup' element={<Register onRegister={handleRegister} registerErrorMessage={registerErrorMessage} />} />
-          <Route path='/signin' element={<Login onLogin={handleLogin} loginErrorMessage={loginErrorMessage} />} />
+          <Route path='/signup'
+            element={!loggedIn ?
+              <Register onRegister={handleRegister} registerErrorMessage={registerErrorMessage} />
+              :
+              <Navigate to='/movies' />
+            } />
+          <Route path='/signin'
+            element={!loggedIn ?
+              <Login onLogin={handleLogin} loginErrorMessage={loginErrorMessage} />
+              :
+              <Navigate to='/movies' />
+            } />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>

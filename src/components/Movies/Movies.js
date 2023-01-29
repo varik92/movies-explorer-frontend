@@ -9,13 +9,15 @@ import * as MainApi from '../../utils/MainApi'
 
 export default function Movies({ handleSearch, checked, handleCheckbox, moviesToRender,
     errorMessage, filtredMovies, loadMore, loadingMore, saveMovie, savedMovies, deleteMovie, inputSearch,
-    setSavedMovies, setSavedMoviesToRender, allMovies, loggedIn }) {
+    setSavedMovies, setSavedMoviesToRender, allMovies, loggedIn, currentUser, setCurrentUserSavedMovies }) {
 
     React.useEffect(() => {
         async function getSavedMovies() {
             const mov = await MainApi.getSavedMovies()
+            let userMovies = mov.data.filter(({ owner }) => owner === currentUser._id)
             setSavedMovies(mov.data)
-            setSavedMoviesToRender(mov.data)
+            setCurrentUserSavedMovies(userMovies)
+            setSavedMoviesToRender(userMovies)
         }
         getSavedMovies()
     }, [])
@@ -29,10 +31,10 @@ export default function Movies({ handleSearch, checked, handleCheckbox, moviesTo
                 {!allMovies.length ? (
                     <Preloader />
                 ) : (
-                    <MoviesCardList moviesToRender={moviesToRender}
-                        errorMessage={errorMessage} filtredMovies={filtredMovies}
-                        loadMore={loadMore} loadingMore={loadingMore} saveMovie={saveMovie}
-                        savedMovies={savedMovies} deleteMovie={deleteMovie} inputSearch={inputSearch}
+                    <MoviesCardList moviesToRender={moviesToRender} errorMessage={errorMessage}
+                        filtredMovies={filtredMovies} loadMore={loadMore} loadingMore={loadingMore}
+                        saveMovie={saveMovie} savedMovies={savedMovies} deleteMovie={deleteMovie}
+                        inputSearch={inputSearch} currentUser={currentUser}
                     />
                 )}
             </main>

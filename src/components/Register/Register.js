@@ -27,7 +27,8 @@ export default function Register({ onRegister, registerErrorMessage }) {
 
             <label className='form__label'>
                 E-mail
-                <input className='form__input' name='email' type='email' value={values.email} onChange={handleChange} required />
+                <input className='form__input' name='email' type='email' value={values.email} onChange={handleChange}
+                    pattern='[^@\s]+@[^@\s]+\.[^@\s]+' required />
             </label>
             <span
                 className={`form__error ${error.email && 'form__error_active'}`} > {error.email ? error.email : 1}

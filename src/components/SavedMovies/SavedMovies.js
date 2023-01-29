@@ -7,15 +7,18 @@ import Header from '../Header/Header'
 import Preloader from '../Preloader/Preloader';
 import * as MainApi from '../../utils/MainApi'
 
-export default function SavedMovies({ checked, handleCheckbox, moviesToRender, errorMessage,
-    filtredMovies, loadMore, saveMovie, savedMovies, deleteMovie, handleSearch, inputSearch,
-    setSavedMovies, setSavedMoviesToRender, loggedIn }) {
+export default function SavedMovies({ checked, handleCheckbox, moviesToRender, errorMessage, filtredMovies,
+    loadMore, saveMovie, savedMovies, deleteMovie, handleSearch, inputSearch, setSavedMovies,
+    setSavedMoviesToRender, loggedIn, currentUser, setCurrentUserSavedMovies }) {
+
     const [isPreloader, setIsPreloader] = React.useState(true)
     React.useEffect(() => {
         async function getSavedMovies() {
             const mov = await MainApi.getSavedMovies()
+            let userMovies = mov.data.filter(({ owner }) => owner === currentUser._id)
             setSavedMovies(mov.data)
-            setSavedMoviesToRender(mov.data)
+            setCurrentUserSavedMovies(userMovies)
+            setSavedMoviesToRender(userMovies)
             setIsPreloader(false)
         }
         getSavedMovies()

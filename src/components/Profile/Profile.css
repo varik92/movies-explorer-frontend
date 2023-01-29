@@ -14,7 +14,7 @@
     line-height: 29px;
     text-align: center;
     color: #FFFFFF;
-    margin: 0 0 123px;
+    margin: 0 0 100px;
 }
 
 .profile__user-name {
@@ -120,13 +120,31 @@
     all: unset
 }
 
+.profile__success-message {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+    color: #00ff5e;
+    opacity: 0;
+    display: block;
+    margin-bottom: 10px;
+    transition: opacity .5s linear;
+}
+
+.profile__success-message_active {
+    opacity: 1;
+}
+
 @media screen and (max-width: 825px) {
     .profile {
         padding: 236px 0 269px;
     }
 
     .profile__title {
-        margin-bottom: 96px;
+        margin-bottom: 73px;
     }
 
     .profile__user-email {
@@ -141,7 +159,7 @@
     }
 
     .profile__title {
-        margin-bottom: 80px;
+        margin-bottom: 57px;
     }
 
     .profile__user-email {

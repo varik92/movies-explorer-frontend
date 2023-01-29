@@ -22,7 +22,7 @@ export default function Login({ onLogin, loginErrorMessage }) {
             <label className='form__label'>
                 E-mail
                 <input className='form__input' type='email' name="email" value={values.email}
-                    onChange={handleChange} required />
+                    onChange={handleChange} pattern='[^@\s]+@[^@\s]+\.[^@\s]+' required />
             </label>
             <span
                 className={`form__error ${error.email && 'form__error_active'}`} > {error.email ? error.email : 1}

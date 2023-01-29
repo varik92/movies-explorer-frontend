@@ -1,13 +1,16 @@
 import './MoviesCard.css';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-export default function MoviesCard({ movieCard, saveMovie, deleteMovie, savedMovies }) {
+export default function MoviesCard({ movieCard, saveMovie, deleteMovie, savedMovies, moviesToRender }) {
     const location = useLocation();
+    const currentUser = React.useContext(CurrentUserContext);
     const [saved, setSaved] = React.useState(false);
 
     React.useEffect(() => {
-        setSaved(savedMovies.some((m) => m.movieId === movieCard.id))
+        let allSaved = (savedMovies.filter(({ owner }) => owner === currentUser._id))
+        setSaved(allSaved.some((m) => m.movieId === movieCard.id))
     })
 
     function toogleSave() {
