@@ -6,13 +6,12 @@ import { useFormWithValidation } from '../../utils/useFormWithValidation';
 
 export default function Register({ onRegister, registerErrorMessage }) {
     const {
-        values, handleChange, error, isValid, resetForm
+        values, handleChange, error, isValid
     } = useFormWithValidation({ name: '', email: '', password: '' });
 
     function handleSubmit(e) {
         e.preventDefault();
         onRegister(values);
-        resetForm();
     };
 
     return (

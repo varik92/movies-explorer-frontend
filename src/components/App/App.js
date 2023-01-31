@@ -12,6 +12,7 @@ import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import * as MainApi from '../../utils/MainApi'
 import * as MoviesApi from '../../utils/MoviesApi'
+import { useFormWithValidation } from '../../utils/useFormWithValidation';
 
 export default function App() {
   const navigate = useNavigate();
@@ -200,6 +201,7 @@ export default function App() {
       .then((data) => {
         if (data) {
           handleLogin(email, password);
+          setRegisterErrorMessage(false);
         }
       })
       .catch((err) => {
@@ -214,6 +216,7 @@ export default function App() {
         if (res) {
           navigate('/movies');
           setLoggedIn(true);
+          setLoginErrorMessage(false)
         }
       })
       .catch((err) => {
