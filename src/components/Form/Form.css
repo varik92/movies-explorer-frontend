@@ -88,6 +88,7 @@
     background: #F8F8F8;
     color: #C2C2C2;
     cursor: unset;
+    pointer-events: none;
 }
 
 .form__button_disabled:hover {

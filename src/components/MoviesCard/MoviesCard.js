@@ -1,8 +1,32 @@
 import './MoviesCard.css';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-export default function MoviesCard({ movieCard }) {
+export default function MoviesCard({ movieCard, saveMovie, deleteMovie, savedMovies, moviesToRender }) {
     const location = useLocation();
+    const currentUser = React.useContext(CurrentUserContext);
+    const [saved, setSaved] = React.useState(false);
+
+    React.useEffect(() => {
+        let allSaved = (savedMovies.filter(({ owner }) => owner === currentUser._id))
+        setSaved(allSaved.some((m) => m.movieId === movieCard.id))
+    })
+
+    function toogleSave() {
+        if (saved) {
+            let movieToDelete = savedMovies.filter((s) => s.movieId === movieCard.id)[0]
+            deleteMovie(movieToDelete);
+            setSaved(false)
+        } else {
+            saveMovie(movieCard)
+            setSaved(true)
+        }
+    }
+
+    function handleDelete() {
+        deleteMovie(movieCard)
+    }
 
     return (
         <li className='movie-card'>
@@ -10,12 +34,18 @@ export default function MoviesCard({ movieCard }) {
                 <h2 className='movie-card__title'>{movieCard.nameRU}</h2>
                 <p className='movie-card__duration'>{movieCard.duration} минут</p>
             </div>
-            <img src={movieCard.image} alt={movieCard.nameRU} className='movie-card__image' />
+            <a className='movie-card__link' href={movieCard.trailerLink} target='_blank'>
+                <img src={location.pathname === '/movies' ? `https://api.nomoreparties.co${movieCard.image.url}` : `${movieCard.image}`} alt={movieCard.nameRU}
+                    className='movie-card__image' />
+            </a>
+
             {location.pathname === '/movies' && (
-                <button type='button' className={`movie-card__button movie-card__button${0 ? '_type_saved' : ''}`} >Сохранить</button>
+                <button type='button' className={`movie-card__button movie-card__button${saved ? '_type_saved' : ''}`}
+                    onClick={toogleSave} >Сохранить</button>
             )}
             {location.pathname === '/saved-movies' && (
-                <button type='button' className='movie-card__button movie-card__button_type_delete'></button>
+                <button type='button' className='movie-card__button movie-card__button_type_delete'
+                    onClick={handleDelete} ></button>
             )
             }
         </li >
